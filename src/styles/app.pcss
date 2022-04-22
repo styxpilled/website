@@ -1,0 +1,91 @@
+@import "@fontsource/fira-mono";
+@import "variables.pcss";
+
+:root {
+  font-family:
+    Arial,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+html {
+  visibility: visible;
+  opacity: 1;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: $bg;
+}
+
+#svelte {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  border-radius: 0.25rem;
+}
+
+h1,
+h2,
+p {
+  font-weight: 400;
+  color: $primary-fg;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: $link-fg;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  user-select: none;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  color: $primary-fg;
+  background-color: $bg;
+  box-shadow: none;
+}
+
+input,
+button {
+  font-size: inherit;
+  font-family: inherit;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
