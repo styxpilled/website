@@ -43,5 +43,10 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0"
+  },
+  "//future dependencies": {
+    "@iconify/icons-twemoji": "^1.1.2",
+    "@iconify/svelte": "^2.1.1",
+    "@iconify/icons-mdi": "^1.1.42"
   }
 }
