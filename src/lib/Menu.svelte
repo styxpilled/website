@@ -53,16 +53,19 @@
     align-items: center;
     grid-column: 3;
     grid-row: 1 / 3;
+    padding: 2rem;
   }
   .content {
     background: $bg-dark;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
   }
   .menu {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 0.5em;
+    /* padding: 0.5em; */
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     align-items: center;
     height: 100%;
     background: $bg-dark-high;

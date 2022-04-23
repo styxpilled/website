@@ -173,6 +173,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 2rem;
   }
 
   .container {
