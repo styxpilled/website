@@ -15,13 +15,16 @@
 </script>
 
 <div class="menu-bar">
-  <div class="content">
-    {#if panelActive === PanelActive.Projects}
-      <Projects />
-    {:else if panelActive === PanelActive.Accounts}
-      <Accounts />
-    {/if}
-  </div>
+  {#if panelActive !== PanelActive.None}
+    <div class="content">
+      {#if panelActive === PanelActive.Projects}
+        <Projects />
+      {:else if panelActive === PanelActive.Accounts}
+        <Accounts />
+      {/if}
+    </div>
+  {/if}
+
   <div class="menu">
     <button
       class="menu-button"
@@ -46,8 +49,14 @@
   .menu-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+  .content {
+    background: $bg-dark;
+    padding: 0.5rem;
   }
   .menu {
     display: flex;
@@ -56,6 +65,6 @@
     padding: 0.5em;
     align-items: center;
     height: 100%;
-    background: $bg-dark;
+    background: $bg-dark-high;
   }
 </style>

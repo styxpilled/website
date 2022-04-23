@@ -16,11 +16,9 @@
 <style lang="postcss">
   @import "variables.pcss";
   .main {
-    display: flex;
-    /* flex-direction: row; */
-    /* space around */
-    justify-content: space-between;
-    padding: 2em;
-    /* align-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
   }
 </style>
