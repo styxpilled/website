@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
   import Intro from "$lib/Intro.svelte";
-  import Projects from "$lib/Projects/index.svelte";
-  import Accounts from "$lib/Accounts.svelte";
+  import Menu from "$lib/Menu.svelte";
 </script>
 
 <svelte:head>
@@ -10,15 +9,18 @@
 
 <section class="main">
   <Intro />
-  <Projects />
-  <Accounts />
+  <Menu />
+  <!-- <Accounts /> -->
 </section>
 
 <style lang="postcss">
+  @import "variables.pcss";
   .main {
-    display: grid;
-    grid-template-columns: 4fr 3fr 3fr;
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+    display: flex;
+    /* flex-direction: row; */
+    /* space around */
+    justify-content: space-between;
+    padding: 2em;
+    /* align-content: space-between; */
   }
 </style>
