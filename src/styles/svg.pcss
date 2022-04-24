@@ -1,0 +1,104 @@
+svg {
+  transform-origin: center;
+  width: 100vw;
+  height: 100vh;
+  stroke-miterlimit: 10;
+}
+
+g {
+  transform-origin: center;
+  stroke-width: 2.5;
+}
+
+g > * {
+  stroke: whitesmoke;
+}
+
+g:hover > * {
+  stroke: #ae97fd;
+}
+
+#background > * {
+  fill: none !important;
+  stroke: none !important;
+}
+
+g > *:not(#background) {
+  fill: transparent;
+}
+
+#outter-square-circle {
+  opacity: 0.5;
+  animation: spin 200s linear infinite;
+}
+
+#mid-greebles {
+  animation: spin 100s linear infinite;
+}
+
+#center0 {
+  animation: spin-reverse 155s linear infinite;
+}
+
+#center1 {
+  animation: spin 130s linear infinite;
+}
+
+#center2 {
+  animation: spin-reverse 140s linear infinite;
+}
+
+#center3-0 {
+  animation: spin-reverse 60s linear infinite;
+}
+
+#center3-1 {
+  animation: spin-reverse 80s linear infinite;
+}
+
+#center3-2 {
+  animation: spin-reverse 100s linear infinite;
+}
+
+#outter-greebles0 {
+  animation: spin-reverse 150s linear infinite;
+}
+
+#outter-greebles1 {
+  animation: spin-reverse 180s linear infinite;
+}
+
+#outter-dashes {
+  stroke-dasharray: 1%, 10%, 1%;
+  animation: spin-reverse 200s linear infinite;
+}
+
+#outter-circle-inner {
+  stroke-dasharray: 40, 30;
+  animation: spin 255s linear infinite;
+}
+
+#outter-circle-dashed-outter {
+  stroke-dasharray: 50, 20;
+  animation: spin 275s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}

@@ -1,24 +1,13 @@
 <script context="module" lang="ts">
-  import Intro from "$lib/Intro.svelte";
-  import Menu from "$lib/Menu.svelte";
+  import Astolabe from "$lib/Astrolabe.svelte";
 </script>
 
 <svelte:head>
-  <title>Home</title>
+  <title>Astolabe</title>
 </svelte:head>
 
-<section class="main">
-  <Intro />
-  <Menu />
-  <!-- <Accounts /> -->
-</section>
+<Astolabe />
 
 <style lang="postcss">
   @import "variables.pcss";
-  .main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-  }
 </style>
