@@ -1,37 +1,3 @@
-svg {
-  transform-origin: center;
-  width: 100vw;
-  height: 100vh;
-  stroke-miterlimit: 10;
-}
-
-g {
-  transform-origin: center;
-  stroke-width: 2.5;
-}
-
-g > * {
-  stroke: whitesmoke;
-}
-
-g:hover > * {
-  stroke: #ae97fd;
-}
-
-#background > * {
-  fill: none !important;
-  stroke: none !important;
-}
-
-g > *:not(#background) {
-  fill: transparent;
-}
-
-#outter-square-circle {
-  opacity: 0.5;
-  animation: spin 200s linear infinite;
-}
-
 #mid-greebles {
   animation: spin 100s linear infinite;
 }
@@ -68,6 +34,10 @@ g > *:not(#background) {
   animation: spin-reverse 180s linear infinite;
 }
 
+#outter-square-circle {
+  animation: spin 200s linear infinite;
+}
+
 #outter-dashes {
   stroke-dasharray: 1%, 10%, 1%;
   animation: spin-reverse 200s linear infinite;
@@ -101,4 +71,41 @@ g > *:not(#background) {
   100% {
     transform: rotate(-360deg);
   }
+}
+
+svg {
+  transform-origin: center;
+  width: 100vw;
+  height: 100vh;
+  stroke-miterlimit: 10;
+  background: #1f1f25;
+}
+
+g {
+  transform-origin: center;
+  stroke-width: 2.5;
+}
+
+g > * {
+  stroke: whitesmoke;
+}
+
+#outter-square-circle > *,
+#center3-0 > * {
+  opacity: 0.5;
+}
+
+#background > * {
+  fill: none !important;
+  stroke: none !important;
+}
+
+g :not(#outter, #mid, #center):hover > * {
+  stroke: #ae97fd;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px #907ecc);
+}
+
+g > *:not(#background) {
+  fill: transparent;
 }

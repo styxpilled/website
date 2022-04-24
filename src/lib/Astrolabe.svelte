@@ -1,3 +1,7 @@
+<script lang="ts">
+  import "$styles/svg.pcss";
+</script>
+
 <svg
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -166,5 +170,9 @@
 </svg>
 
 <style lang="postcss">
-  @import "svg.pcss";
+  /* g :not(#outter, #mid, #center) :hover > * {
+    stroke: #ae97fd;
+    opacity: 1;
+    filter: drop-shadow(0px 0px 3px #907ecc);
+  } */
 </style>
