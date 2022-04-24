@@ -88,6 +88,7 @@ g {
 
 g > * {
   stroke: whitesmoke;
+  fill: transparent;
 }
 
 #outter-square-circle > *,
@@ -95,17 +96,8 @@ g > * {
   opacity: 0.5;
 }
 
-#background > * {
-  fill: none !important;
-  stroke: none !important;
-}
-
 g :not(#outter, #mid, #center):hover > * {
   stroke: #ae97fd;
   opacity: 1;
   filter: drop-shadow(0 0 3px #907ecc);
-}
-
-g > *:not(#background) {
-  fill: transparent;
 }

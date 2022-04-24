@@ -12,9 +12,6 @@
   enable-background="new 0 0 1920 1080"
   xml:space="preserve"
 >
-  <g id="background">
-    <rect fill="#666666" width="1920" height="1080" />
-  </g>
   <g id="outter">
     <g id="outter-circle-dashed-outter">
       <circle cx="960" cy="540" r="1098" />
