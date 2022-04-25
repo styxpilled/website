@@ -1,7 +1,52 @@
 <script lang="ts">
   import "$styles/svg.pcss";
+  import Popup from "$lib/Popup.svelte";
+  import Accounts from "$lib/Accounts.svelte";
+  import Projects from "$lib/Projects/index.svelte";
+
+  let showpopup1 = true;
+  let showpopup2 = false;
+  let active = false;
+  let popupName = "";
+
+  let pageX: number;
+  let pageY: number;
+
+  function openPopup(e: MouseEvent) {
+    showpopup1 = !showpopup1;
+    showpopup2 = !showpopup2;
+    const target = e.target as HTMLElement;
+    if (popupName === target.parentElement.id) {
+      active = false;
+      popupName = "";
+    } else {
+      active = true;
+      popupName = target.parentElement.id;
+    }
+    pageX = e.pageX;
+    pageY = e.pageY;
+  }
 </script>
 
+{#if active}
+  {#if showpopup1}
+    <Popup {pageX} {pageY}>
+      {#if popupName === "mid-greebles"}
+        <Accounts />
+      {:else if popupName === "outter-square-circle"}
+        <Projects />
+      {/if}
+    </Popup>
+  {:else if showpopup2}
+    <Popup {pageX} {pageY}>
+      {#if popupName === "mid-greebles"}
+        <Accounts />
+      {:else if popupName === "outter-square-circle"}
+        <Projects />
+      {/if}
+    </Popup>
+  {/if}
+{/if}
 <svg
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -11,6 +56,7 @@
   viewBox="0 0 1920 1080"
   enable-background="new 0 0 1920 1080"
   xml:space="preserve"
+  on:click={(e) => openPopup(e)}
 >
   <g id="outter">
     <g id="outter-circle-dashed-outter">
@@ -165,11 +211,3 @@
     </g>
   </g>
 </svg>
-
-<style lang="postcss">
-  /* g :not(#outter, #mid, #center) :hover > * {
-    stroke: #ae97fd;
-    opacity: 1;
-    filter: drop-shadow(0px 0px 3px #907ecc);
-  } */
-</style>
