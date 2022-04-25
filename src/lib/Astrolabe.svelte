@@ -1,5 +1,6 @@
 <script lang="ts">
   import "$styles/svg.pcss";
+  import { onMount } from "svelte";
   import Popup from "$lib/Popup.svelte";
   import Accounts from "$lib/Accounts.svelte";
   import Projects from "$lib/Projects/index.svelte";
@@ -11,6 +12,15 @@
 
   let pageX: number;
   let pageY: number;
+
+  onMount(() => {
+    let groupList = document.querySelectorAll("g[id]");
+    groupList.forEach((group) => {
+      const g = group as HTMLElement;
+      let angle = Math.random() * 360;
+      g.style.transform = `rotate(${angle}deg)`;
+    });
+  });
 
   function openPopup(e: MouseEvent) {
     showpopup1 = !showpopup1;
