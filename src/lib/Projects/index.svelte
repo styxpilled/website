@@ -2,9 +2,15 @@
   import { onMount } from "svelte";
   import type Repository from "./repo";
   import getProjects from "./projects";
+  import { repos } from "../../stores";
+
   let output: Repository[];
+  repos.subscribe((value) => {
+    output = value;
+  });
+
   onMount(async () => {
-    output = await getProjects("styxpilled");
+    repos.set(await getProjects("styxpilled"));
   });
 </script>
 
