@@ -10,8 +10,11 @@
   let active = false;
   let popupName = "";
 
-  let pageX: number;
-  let pageY: number;
+  let pageW: number;
+  let pageH: number;
+  let screenW: number, screenH: number;
+
+  let flipW: boolean, flipH: boolean;
 
   onMount(() => {
     let groupList = document.querySelectorAll("g[id]");
@@ -26,21 +29,40 @@
     showpopup1 = !showpopup1;
     showpopup2 = !showpopup2;
     const target = e.target as HTMLElement;
-    if (popupName === target.parentElement.id) {
+    if (
+      popupName === target.parentElement.id ||
+      target.parentElement.classList.contains("inactive")
+    ) {
       active = false;
       popupName = "";
     } else {
       active = true;
       popupName = target.parentElement.id;
+      //   style:top="{pageY > screenH / 2 ? pageY - h : pageY}px"
+      // style:left="{pageX > screenW / 2 ? pageX - w : pageX}px"
+      pageW = e.pageX;
+      pageH = e.pageY;
+      console.log(pageW, screenW / 2, pageH, screenH / 2);
+
+      if (pageW > screenW / 2) {
+        flipW = true;
+      } else {
+        flipW = false;
+      }
+      if (pageH > screenH / 2) {
+        flipH = true;
+      } else {
+        flipH = false;
+      }
     }
-    pageX = e.pageX;
-    pageY = e.pageY;
   }
 </script>
 
+<svelte:window bind:innerHeight={screenH} bind:innerWidth={screenW} />
+
 {#if active}
   {#if showpopup1}
-    <Popup {pageX} {pageY}>
+    <Popup {flipW} {flipH} {pageW} {pageH}>
       {#if popupName === "mid-greebles"}
         <Accounts />
       {:else if popupName === "outter-square-circle"}
@@ -48,7 +70,7 @@
       {/if}
     </Popup>
   {:else if showpopup2}
-    <Popup {pageX} {pageY}>
+    <Popup {flipW} {flipH} {pageW} {pageH}>
       {#if popupName === "mid-greebles"}
         <Accounts />
       {:else if popupName === "outter-square-circle"}
@@ -69,20 +91,20 @@
   on:click={(e) => openPopup(e)}
 >
   <g id="outter">
-    <g id="outter-circle-dashed-outter">
+    <g id="outter-circle-dashed-outter" class="inactive">
       <circle cx="960" cy="540" r="1098" />
     </g>
-    <g id="outter-circle-outter">
+    <g id="outter-circle-outter" class="inactive">
       <circle cx="961.6" cy="540" r="1037.7" />
       <circle cx="961.6" cy="540" r="1067.9" />
     </g>
-    <g id="outter-dashes">
+    <g id="outter-dashes" class="inactive">
       <circle cx="964.8" cy="540.3" r="890.3" />
     </g>
-    <g id="outter-circle-mid">
+    <g id="outter-circle-mid" class="inactive">
       <circle cx="960" cy="540" r="747.4" />
     </g>
-    <g id="outter-circle-inner">
+    <g id="outter-circle-inner" class="inactive">
       <ellipse cx="960" cy="540" rx="599.9" ry="599.4" />
     </g>
     <g id="outter-square-circle">
@@ -140,13 +162,13 @@
     </g>
   </g>
   <g id="mid">
-    <g id="mid-dashes">
+    <g id="mid-dashes" class="inactive">
       <circle cx="960" cy="540" r="463.6" />
     </g>
-    <g id="mid-circle-mid">
+    <g id="mid-circle-mid" class="inactive">
       <circle cx="960" cy="540" r="286.7" />
     </g>
-    <g id="mid-circle-inner">
+    <g id="mid-circle-inner" class="inactive">
       <circle cx="960" cy="540" r="215.1" />
     </g>
     <g id="mid-greebles">
@@ -172,7 +194,7 @@
     </g>
   </g>
   <g id="center">
-    <g id="center-square">
+    <g id="center-square" class="inactive">
       <rect
         x="826"
         y="406"

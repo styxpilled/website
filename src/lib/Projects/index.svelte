@@ -31,10 +31,10 @@
 </div>
 
 <style lang="postcss">
-  h3 {
+  /* h3 {
     text-align: right;
   }
   .projects {
     text-align: right;
-  }
+  } */
 </style>

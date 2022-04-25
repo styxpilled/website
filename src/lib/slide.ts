@@ -11,7 +11,7 @@ export interface SlideParams {
 
 export function slide(
   node: Element,
-  { delayX = 0, delayY = 3000, delay = 0, duration = 400, easing = cubicOut }: SlideParams
+  { delayX = 0, delayY = 0, delay = 0, duration = 400, easing = cubicOut }: SlideParams
 ): TransitionConfig {
   const slideHor = slideHorizontal(node, { delay: delayX });
   const slideVert = slideVertical(node, { delay: delayY });
@@ -28,6 +28,7 @@ export function slideVertical(
   { delay = 0, duration = 400, easing = cubicOut }: SlideParams
 ): TransitionConfig {
   const style = getComputedStyle(node);
+  const opacity = +style.opacity;
   const height = parseFloat(style.height);
   const padding_top = parseFloat(style.paddingTop);
   const padding_bottom = parseFloat(style.paddingBottom);
@@ -42,6 +43,7 @@ export function slideVertical(
     easing,
     css: (t) =>
       "overflow: hidden;" +
+      `opacity: ${Math.min(t * 20, 1) * opacity};` +
       `height: ${t * height}px;` +
       `padding-top: ${t * padding_top}px;` +
       `padding-bottom: ${t * padding_bottom}px;` +
@@ -56,6 +58,7 @@ export function slideHorizontal(
   { delay = 0, duration = 400, easing = cubicOut }: SlideParams
 ): TransitionConfig {
   const style = getComputedStyle(node);
+  const opacity = +style.opacity;
   const width = parseFloat(style.width);
   const padding_top = parseFloat(style.paddingLeft);
   const padding_bottom = parseFloat(style.paddingRight);
@@ -70,6 +73,7 @@ export function slideHorizontal(
     easing,
     css: (t) =>
       "overflow: hidden;" +
+      `opacity: ${Math.min(t * 20, 1) * opacity};` +
       `width: ${t * width}px;` +
       `padding-left: ${t * padding_top}px;` +
       `padding-right: ${t * padding_bottom}px;` +
