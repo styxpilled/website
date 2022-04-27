@@ -1,10 +1,20 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
   import { slide } from "./slide";
   export let pageH: number;
   export let pageW: number;
 
+  import { onMount } from "svelte";
+  onMount(() => {
+    // self.style.visibility = "visible";
+
+    // set visibility after 300 ms
+    setTimeout(() => {
+      self.style.visibility = "visible";
+    }, 30);
+  });
+
   let w: number, h: number;
+  let self;
 
   export let flipW: boolean, flipH: boolean;
   console.log(flipW, flipH);
@@ -16,8 +26,10 @@
   style:top="{flipH ? pageH - h : pageH}px"
   style:left="{flipW ? pageW - w : pageW}px"
   style:text-align={flipW ? "left" : "right"}
+  style:visibility="hidden"
   bind:clientWidth={w}
   bind:clientHeight={h}
+  bind:this={self}
 >
   <slot />
 </div>
