@@ -7,7 +7,3 @@
 </svelte:head>
 
 <Astolabe />
-
-<style lang="postcss">
-  @import "variables.pcss";
-</style>
