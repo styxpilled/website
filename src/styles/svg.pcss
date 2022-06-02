@@ -84,9 +84,6 @@ svg {
 g {
   transform-origin: center;
   stroke-width: 2.5;
-}
-
-g > * {
   stroke: whitesmoke;
   fill: transparent;
 }
@@ -95,8 +92,18 @@ g > * {
   opacity: 0.5;
 }
 
-g :not(#outter, #mid, #center):hover > * {
-  stroke: #ae97fd;
+:root {
+  --color: #ae97fd;
+}
+
+g.inactive:hover > * {
+  stroke: var(--color);
   opacity: 1;
-  filter: drop-shadow(0 0 3px #907ecc);
+  filter: drop-shadow(0 0 3px var(--color));
+}
+
+g :not(#outter, #mid, #center, .inactive):hover > * {
+  stroke: var(--color);
+  opacity: 1;
+  filter: drop-shadow(0 0 3px var(--color));
 }

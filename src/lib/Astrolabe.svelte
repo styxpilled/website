@@ -6,24 +6,41 @@
   let popupName = "";
 
   let screenW: number, screenH: number;
+  const prideColors = [
+    "e23241",
+    "ff9438",
+    "ffdc44",
+    "4dc16f",
+    "1781af",
+    "8b1b8d",
+    "65d3ff",
+    "ffc6de",
+    "ffffff",
+  ];
 
   onMount(() => {
-    let groupList = document.querySelectorAll("g[id]");
-    groupList.forEach((group) => {
-      const g = group as HTMLElement;
+    document.querySelectorAll("g").forEach((g) => {
+      const group = g as unknown as HTMLElement;
       let angle = Math.random() * 360;
-      g.style.transform = `rotate(${angle}deg)`;
+      group.style.transform = `rotate(${angle}deg)`;
+    });
+    let index = 0;
+    document.querySelector("#circles").childNodes.forEach((c) => {
+      const child = c as HTMLElement;
+      child.style.stroke = `#${prideColors[index]}`;
+      child.style.setProperty("--color", `#${prideColors[index]}`);
+      index++;
     });
   });
 
   function openPopup(e: MouseEvent) {
     const target = e.target as HTMLElement;
-    if (
-      !target.parentElement.classList.contains("inactive") &&
-      !target.classList.contains("inactive")
-    ) {
-      popupName = target.parentElement.id;
-    }
+    // if (
+    // !target.parentElement.classList.contains("inactive") &&
+    // !target.classList.contains("inactive")
+    // ) {
+    popupName = target.parentElement.id;
+    // }
   }
 </script>
 
