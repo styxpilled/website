@@ -1,20 +1,11 @@
 <script lang="ts">
   import "$styles/svg.pcss";
   import { onMount } from "svelte";
-  import Popup from "$lib/Popup.svelte";
-  import Accounts from "$lib/Accounts.svelte";
-  import Projects from "$lib/Projects/index.svelte";
+  import Info from "$lib/Info.svelte";
 
-  let showpopup1 = true;
-  let showpopup2 = false;
-  let active = false;
   let popupName = "";
 
-  let pageW: number;
-  let pageH: number;
   let screenW: number, screenH: number;
-
-  let flipW: boolean, flipH: boolean;
 
   onMount(() => {
     let groupList = document.querySelectorAll("g[id]");
@@ -26,59 +17,20 @@
   });
 
   function openPopup(e: MouseEvent) {
-    showpopup1 = !showpopup1;
-    showpopup2 = !showpopup2;
     const target = e.target as HTMLElement;
     if (
-      popupName === target.parentElement.id ||
-      target.parentElement.classList.contains("inactive")
+      !target.parentElement.classList.contains("inactive") &&
+      !target.classList.contains("inactive")
     ) {
-      active = false;
-      popupName = "";
-    } else {
-      active = true;
       popupName = target.parentElement.id;
-      //   style:top="{pageY > screenH / 2 ? pageY - h : pageY}px"
-      // style:left="{pageX > screenW / 2 ? pageX - w : pageX}px"
-      pageW = e.pageX;
-      pageH = e.pageY;
-      console.log(pageW, screenW / 2, pageH, screenH / 2);
-
-      if (pageW > screenW / 2) {
-        flipW = true;
-      } else {
-        flipW = false;
-      }
-      if (pageH > screenH / 2) {
-        flipH = true;
-      } else {
-        flipH = false;
-      }
     }
   }
 </script>
 
 <svelte:window bind:innerHeight={screenH} bind:innerWidth={screenW} />
 
-{#if active}
-  {#if showpopup1}
-    <Popup {flipW} {flipH} {pageW} {pageH}>
-      {#if popupName === "mid-greebles"}
-        <Accounts />
-      {:else if popupName === "outter-square-circle"}
-        <Projects />
-      {/if}
-    </Popup>
-  {:else if showpopup2}
-    <Popup {flipW} {flipH} {pageW} {pageH}>
-      {#if popupName === "mid-greebles"}
-        <Accounts />
-      {:else if popupName === "outter-square-circle"}
-        <Projects />
-      {/if}
-    </Popup>
-  {/if}
-{/if}
+<Info title={popupName} />
+
 <svg
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -89,8 +41,10 @@
   enable-background="new 0 0 1920 1080"
   xml:space="preserve"
   on:click={(e) => openPopup(e)}
+  on:mouseover={(e) => openPopup(e)}
+  on:focus={() => console.log("")}
 >
-  <g id="outter">
+  <g id="circles">
     <g id="outter-circle-dashed-outter" class="inactive">
       <circle cx="960" cy="540" r="1098" />
     </g>
@@ -107,6 +61,26 @@
     <g id="outter-circle-inner" class="inactive">
       <ellipse cx="960" cy="540" rx="599.9" ry="599.4" />
     </g>
+    <g id="mid-dashes" class="inactive">
+      <circle cx="960" cy="540" r="463.6" />
+    </g>
+    <g id="mid-circle-mid" class="inactive">
+      <circle cx="960" cy="540" r="286.7" />
+    </g>
+    <g id="mid-circle-inner" class="inactive">
+      <circle cx="960" cy="540" r="215.1" />
+    </g>
+    <g id="center-square" class="inactive">
+      <rect
+        x="826"
+        y="406"
+        transform="matrix(0.7071 0.7071 -0.7071 0.7071 663.0151 -520.6602)"
+        width="268"
+        height="268"
+      />
+    </g>
+  </g>
+  <g id="outter">
     <g id="outter-square-circle">
       <rect
         x="321.7"
@@ -162,15 +136,6 @@
     </g>
   </g>
   <g id="mid">
-    <g id="mid-dashes" class="inactive">
-      <circle cx="960" cy="540" r="463.6" />
-    </g>
-    <g id="mid-circle-mid" class="inactive">
-      <circle cx="960" cy="540" r="286.7" />
-    </g>
-    <g id="mid-circle-inner" class="inactive">
-      <circle cx="960" cy="540" r="215.1" />
-    </g>
     <g id="mid-greebles">
       <circle cx="889.5" cy="278.5" r="16" />
 
@@ -194,15 +159,6 @@
     </g>
   </g>
   <g id="center">
-    <g id="center-square" class="inactive">
-      <rect
-        x="826"
-        y="406"
-        transform="matrix(0.7071 0.7071 -0.7071 0.7071 663.0151 -520.6602)"
-        width="268"
-        height="268"
-      />
-    </g>
     <g id="center2">
       <circle cx="1020" cy="601" r="34.5" />
       <line x1="975.5" y1="556.5" x2="995.5" y2="576.5" />
