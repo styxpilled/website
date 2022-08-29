@@ -4,6 +4,8 @@
   import Info from "$lib/Info.svelte";
 
   let popupName = "";
+  let shake;
+  let main: SVGElement;
 
   let screenW: number, screenH: number;
   const prideColors = [
@@ -33,14 +35,21 @@
     });
   });
 
+  const shaker = () => {
+    main.style.opacity = "1.0";
+    main.style.willChange = 'transform, opacity';
+    shake = setTimeout(() => {
+      main.style.opacity = "0.5";
+      shaker()
+    }, 1000);
+  }
+
   function openPopup(e: MouseEvent) {
     const target = e.target as HTMLElement;
-    // if (
-    // !target.parentElement.classList.contains("inactive") &&
-    // !target.classList.contains("inactive")
-    // ) {
+    main.style.willChange = 'auto';
     popupName = target.parentElement.id;
-    // }
+    clearTimeout(shake);
+    shaker()
   }
 </script>
 
@@ -57,9 +66,9 @@
   viewBox="0 0 1920 1080"
   enable-background="new 0 0 1920 1080"
   xml:space="preserve"
-  on:click={(e) => openPopup(e)}
   on:mouseover={(e) => openPopup(e)}
   on:focus={() => console.log("")}
+  bind:this={main}
 >
   <g id="circles">
     <g id="outter-circle-dashed-outter" class="inactive">
