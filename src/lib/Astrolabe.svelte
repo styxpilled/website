@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "$styles/svg.pcss";
+  import "$styles/svg.css";
   import { onMount } from "svelte";
   import Info from "$lib/Info.svelte";
 

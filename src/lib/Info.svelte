@@ -7,7 +7,7 @@
 </div>
 
 <style lang="postcss">
-  @import "variables.pcss";
+  @import "variables.css";
   .info {
     background: transparent;
     padding: 1em;

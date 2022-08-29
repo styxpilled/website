@@ -60,7 +60,7 @@
 </div>
 
 <style lang="postcss">
-  @import "variables.pcss";
+  @import "variables.css";
   .hand {
     animation: wave 15s infinite 1s;
     font-size: 10rem;

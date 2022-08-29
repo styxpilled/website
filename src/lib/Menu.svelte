@@ -45,7 +45,7 @@
 </div>
 
 <style lang="postcss">
-  @import "variables.pcss";
+  @import "variables.css";
   .menu-bar {
     display: flex;
     flex-direction: row;
