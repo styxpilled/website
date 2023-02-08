@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let title: string = "Astrolabe";
+  export let title: string = 'Astrolabe';
 </script>
 
 <div class="info">
@@ -7,7 +7,6 @@
 </div>
 
 <style lang="postcss">
-  @import "variables.css";
   .info {
     background: transparent;
     padding: 1em;

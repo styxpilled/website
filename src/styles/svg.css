@@ -79,7 +79,6 @@ svg {
   height: 100vh;
   stroke-miterlimit: 10;
   background: #1f1f25;
-  transform: translateZ(0);
 }
 
 g {
@@ -88,7 +87,6 @@ g {
   stroke: whitesmoke;
   fill: transparent;
   will-change: transform, opacity;
-  transform: translateZ(0);
 }
 
 .inactive {
