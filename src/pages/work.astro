@@ -1,0 +1,86 @@
+---
+import Inner from "../layouts/Inner.astro";
+import Layout from "../layouts/Layout.astro";
+
+const projects: {
+  href: string | null;
+  label: string;
+  description: string;
+}[] = [
+  {
+    href: "https://blog.styx.gay/",
+    label: "blog",
+    description: "blog with my fun articles",
+  },
+  {
+    href: null,
+    label: "notki CMS",
+    description: `Proprietary video Content Management System made for a client. Made using Svelte/Kit, Rust, Python and PostgreSQL.`,
+  },
+  {
+    href: null,
+    label: "Video Colorizer",
+    description:
+      "Multithreaded AI video colorizing software made in Tauri for a client.",
+  },
+  {
+    href: "https://codecritic.styx.gay/",
+    label: "codecritic",
+    description: "letterboxd for npm packages",
+  },
+  {
+    href: "https://styxtype.styx.gay",
+    label: "webtype",
+    description: "A collection and showcase of free fonts.",
+  },
+  {
+    href: null,
+    label: "book-buddy",
+    description: "A TUI-styled ebook reader made in Tauri",
+  },
+  {
+    href: null,
+    label: "termdraw",
+    description: "A terminal drawing app.",
+  },
+  {
+    href: null,
+    label: "vidcat / label-buddy",
+    description: "A file management and labeling app made in Tauri",
+  },
+  {
+    href: null,
+    label: "image-buddy",
+    description:
+      "High performance image viewer written in Rust, powered by egui.",
+  },
+  {
+    href: null,
+    label: "video-hash",
+    description:
+      "Perceptual video hasher experiment for finding duplicate videos.",
+  },
+];
+---
+
+<Layout>
+  <Inner>
+    <div>
+      <p>Projects:</p>
+      {
+        projects.map((project) => (
+          <div class="projects">
+            <h3>
+              {project.href !== null ? (
+                <a href={project.href}>{project.label}</a>
+              ) : (
+                <span>{project.label}</span>
+              )}
+            </h3>
+            <p>{project.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Inner>
+</Layout>

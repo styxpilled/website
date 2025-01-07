@@ -1,0 +1,93 @@
+.btn {
+  border: 2px solid #f2f7fc;
+  /* margin: 0.5rem; */
+  padding: 0.125rem 1.25rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-feature-settings: "ss03" 1;
+  font-family: "Roboto";
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+}
+
+.btn-bg:hover > .btn,
+.btn-bg:focus-visible > .btn,
+.btn-bg:active > .btn {
+  outline: none;
+  box-shadow: 2px 2px 0px #111215, 3px 3px 0px #f2f7fc;
+  transform: translate(-2px, -2px);
+  /* height: 100%;
+  width: 100%; */
+  /* border: 1px solid #f2f7fc; */
+  /* transform: translate(2px, 2px); */
+}
+
+#root {
+  color: #f2f7fc;
+  background-color: #111215;
+
+  min-height: 100dvh;
+  min-width: 100dvw;
+  font-family: "Afacad";
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+#content {
+  position: relative;
+  width: 100dvw;
+  max-width: 1200px;
+  z-index: 5;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+*::selection {
+  color: #111215;
+  background-color: #f2f7fc;
+  filter: invert(1);
+}
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin-left: 1.5rem;
+  max-width: 640px;
+  text-indent: 1ch;
+  color: #dee2e7;
+}
+h1 {
+  font-size: 4rem;
+}
+a {
+  color: #f2f7fc;
+}
+a:hover {
+  text-decoration-style: dashed;
+}
+.btn a,
+a.btn {
+  text-decoration: none;
+}
+header {
+  display: grid;
+  width: 100dvw;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  width: 100%;
+  margin-top: 12vh;
+  padding: 0.5rem;
+}

@@ -1,0 +1,45 @@
+---
+import Inner from "../layouts/Inner.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Inner>
+    <p>
+      This website was build with <a class="astro" href="https://astro.build/"
+        >Astro</a
+      >. Normally I use <a class="svelte" href="https://svelte.dev/">Svelte</a> to
+      build highly interactive experiences. However when I don't need the interactivity
+      that Svelte provides, I reach for Astro to hand-craft a small and performant
+      static site.
+    </p>
+    <p>
+      The background for this website is a large <a
+        href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a
+      > made in Adobe Illustrator. It's animated entirely using CSS, allowing it
+      work without JavaScript, while still loading extremely fast.
+    </p>
+    <p>
+      The hero image was made using the non-commercial font <a
+        href="https://177studio.com/product/protest-stylish-serif-font/"
+        >Protest</a
+      >. Originally, I included the font file and used it to render the hero
+      image. Later, I baked it to an SVG in Adobe Illustrator to make some
+      creative edits and reduce page size.
+    </p>
+  </Inner>
+</Layout>
+
+<style>
+  a.astro {
+    color: #ad41ff;
+    /* color: transparent; */
+    /* -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(66.77deg, #d83333, #f041ff);
+    border-bottom: 2px solid white; */
+  }
+  a.svelte {
+    color: #ff3e00;
+  }
+</style>

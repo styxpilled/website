@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/roboto-flex':
+        specifier: ^5.1.1
+        version: 5.1.1
+      '@fontsource/roboto':
+        specifier: ^5.1.1
+        version: 5.1.1
       astro:
         specifier: ^5.1.1
         version: 5.1.1(jiti@2.4.2)(rollup@4.29.1)(typescript@5.7.2)
@@ -332,6 +338,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/roboto-flex@5.1.1':
+    resolution: {integrity: sha512-cMtqtR+EhqTcox5+Sz+/+N7C8hHheQm1EtxJ9qrr356N2lwbpEU0y5OA4as+V7cdiaEFxXw6jzO9KoqLMZ6tNg==}
+
+  '@fontsource/roboto@5.1.1':
+    resolution: {integrity: sha512-XwVVXtERDQIM7HPUIbyDe0FP4SRovpjF7zMI8M7pbqFp3ahLJsJTd18h+E6pkar6UbV3btbwkKjYARr5M+SQow==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2044,6 +2056,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.0':
     optional: true
+
+  '@fontsource-variable/roboto-flex@5.1.1': {}
+
+  '@fontsource/roboto@5.1.1': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

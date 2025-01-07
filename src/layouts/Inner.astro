@@ -1,0 +1,35 @@
+---
+import "@fontsource/afacad/latin-400.css";
+import Background from "../components/Background.astro";
+import "../styles/app.css";
+---
+
+<div id="root">
+  <Background />
+  <div id="content">
+    <header>
+      <!-- <h2><a id="logo" href="/"> <img height="42" src="/hero.svg" /></a></h2> -->
+      <a href="/" class="btn-bg">
+        <span class="btn">home</span>
+      </a>
+      <a href="/work" class="btn-bg">
+        <span class="btn">work</span>
+      </a>
+      <a href="/resume" class="btn-bg">
+        <span class="btn">resumé</span>
+      </a>
+      <a href="/about" class="btn-bg">
+        <span class="btn">about</span>
+      </a>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </div>
+</div>
+
+<style>
+  header {
+    margin-top: 1rem;
+  }
+</style>
