@@ -9,8 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource-variable/roboto-flex": "^5.1.1",
-    "@fontsource/roboto": "^5.1.1",
+    "@fontsource/afacad": "^5.1.1",
     "astro": "^5.1.1"
   }
 }
