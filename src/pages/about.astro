@@ -17,7 +17,9 @@ import Layout from "../layouts/Layout.astro";
       The background for this website is a large <a
         href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a
       > made in Adobe Illustrator. It's animated entirely using CSS, allowing it
-      work without JavaScript, while still loading extremely fast.
+      work without JavaScript, while still loading extremely fast. Sadly, Astro transitions
+      do not support persisting CSS animation state, so it has to restart every navigation.
+      Pain.
     </p>
     <p>
       The hero image was made using the non-commercial font <a
