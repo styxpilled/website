@@ -5,13 +5,99 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <Inner>
-    <img height="100" alt="Hero image saying 'Styx'" src="/hero.svg" />
-    <div>
-      <p>Occupation: Full-Stack Developer</p>
-      <p>Languages: Polish, English, Lithuanian, Russian</p>
-      <p>Location: Warsaw, Poland</p>
-      <p>Website: <a href="https://styx.gay">styx.gay</a></p>
-      <p>Email: contact@styx.gay, styxpilled@gmail.com</p>
+    <div id="resume">
+      <div>
+        <div>
+          <p>Occupation: Full-Stack Developer</p>
+          <p>Languages: Polish, English, Lithuanian, Russian</p>
+          <p>Location: Warsaw, Poland</p>
+          <p>Website: <a href="https://styx.gay">styx.gay</a></p>
+          <p>Email: contact@styx.gay, styxpilled@gmail.com</p>
+        </div>
+        <div>
+          <p><strong>SKILLS</strong></p>
+          <ul>
+            <li>JS/TS/CSS/HTML</li>
+            <li>Svelte</li>
+            <li>Astro</li>
+            <li>Rust</li>
+            <li>Postgres/SQL</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>App developer</h3>
+          <p class="company">Grupa Filmowa sp. z o.o.</p>
+          <p class="time">December 2023 - October 2024</p>
+          <ul>
+            <li>
+              Designed and developed an accessible AI video colorization desktop
+              app made with Tauri and Svelte.
+            </li>
+            <li>
+              Developed a high-performance, multithreaded Rust backend for said
+              app, complete with integrations for Premiere Pro and DaVinci
+              resolve.
+            </li>
+            <li>
+              Worked closely with the end users and implemented rapid changes to
+              quickly implement wanted features, leading to high satisfaction.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Full-stack developer</h3>
+          <p class="company">ViviTC</p>
+          <p class="time">October 2022 - November 2023</p>
+          <ul>
+            <li>
+              Spearheaded work on the "notki" Content Management System for
+              Grupa Filmowa sp. z o.o.
+            </li>
+            <li>
+              Helped write technical reports, specifications and user manuals.
+            </li>
+            <li>
+              Designed and developed accessible user interfaces with modern
+              Javascript/Typescript frameworks, HTML5 and CSS3, including a
+              custom video player.
+            </li>
+            <li>
+              Developed high-performance, resilient backend webservers in Rust,
+              integrating traditional tools like FFMPEG and Docker, and AI tools
+              like OpenAI's Whisper.
+            </li>
+            <li>
+              Managed a PostgreSQL database, utilizing raw SQL to achieve high
+              performance inachieveable with ORM tools.
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </Inner>
 </Layout>
+
+<style>
+  #resume {
+    display: flex;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 740px) {
+    #resume {
+      flex-direction: column;
+    }
+  }
+
+  ul {
+    margin-top: 0;
+    max-width: 800px;
+    list-style: circle;
+  }
+
+  .company::before {
+    content: "@ ";
+  }
+</style>
