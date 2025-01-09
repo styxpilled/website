@@ -1,48 +1,47 @@
 <script>
-  function getRandomArbitrary(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-  }
-  const groups = document.getElementsByTagName("g");
+  // function getRandomArbitrary(min: number, max: number) {
+  //   return Math.random() * (max - min) + min;
+  // }
+  // const groups = document.getElementsByTagName("g");
 
-  let i = 0;
-  for (const group of groups) {
-    // group.style.stroke = "";
-    // group.style.animationDuration = getRandomArbitrary(20, 160) + "s";
-    // group.style.stroke = `hsl(${i * 10}deg 100% 50%)`;
-    // group.style.stroke = `oklch(100% 0.6 ${i * 10}deg)`;
-    group.style.stroke = "#555";
-    // group.style.stroke = `hsl(${Math.floor(Math.random() * 360)}deg 100% 50%)`;
-    i++;
-  }
+  // let i = 0;
+  // for (const group of groups) {
+  // group.style.stroke = "";
+  // group.style.animationDuration = getRandomArbitrary(20, 160) + "s";
+  // group.style.stroke = `hsl(${i * 10}deg 100% 50%)`;
+  // group.style.stroke = `oklch(100% 0.6 ${i * 10}deg)`;
+  // group.style.stroke = "#555";
+  // group.style.stroke = `hsl(${Math.floor(Math.random() * 360)}deg 100% 50%)`;
+  // i++;
+  // }
 
-  const svg = document.getElementById("bg");
+  // const svg = document.getElementById("bg");
 
-  if (svg) {
-    const els = svg.getElementsByTagName("circle");
-    const arr = [...els];
-    // arr
-    //   .sort((a, b) => a.cy.baseVal.value - b.cy.baseVal.value)
-    //   .sort((a, b) => a.cx.baseVal.value - b.cx.baseVal.value)
-    //   .sort((a, b) => a.r.baseVal.value - b.r.baseVal.value);
-    // arr.sort(
-    //   (a, b) =>
-    //     a.cy.baseVal.value +
-    //     a.cx.baseVal.value +
-    //     a.r.baseVal.value -
-    //     (b.cy.baseVal.value + b.cx.baseVal.value + b.r.baseVal.value)
-    // );
+  // if (svg) {
+  //   const els = svg.getElementsByTagName("circle");
+  //   const arr = [...els];
+  // arr
+  //   .sort((a, b) => a.cy.baseVal.value - b.cy.baseVal.value)
+  //   .sort((a, b) => a.cx.baseVal.value - b.cx.baseVal.value)
+  //   .sort((a, b) => a.r.baseVal.value - b.r.baseVal.value);
+  // arr.sort(
+  //   (a, b) =>
+  //     a.cy.baseVal.value +
+  //     a.cx.baseVal.value +
+  //     a.r.baseVal.value -
+  //     (b.cy.baseVal.value + b.cx.baseVal.value + b.r.baseVal.value)
+  // );
 
-    for (let index = 0; index < arr.length; index++) {
-      const el = arr[index];
-      // el.style.stroke = `hsl(${(index / arr.length) * 360}deg 100% 50%)`;
-    }
-  }
+  // for (let index = 0; index < arr.length; index++) {
+  // const el = arr[index];
+  // el.style.stroke = `hsl(${(index / arr.length) * 360}deg 100% 50%)`;
+  //   }
+  // }
 </script>
 
 <style>
   svg {
-    stroke: #f2f7fc;
-    stroke: #555;
+    stroke: var(--bg-soft);
     stroke-width: 2;
     --speed-stop: 1;
     --speed-mul-1: 1;

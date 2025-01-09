@@ -1,5 +1,13 @@
+:root {
+  color-scheme: light dark;
+  --fg: light-dark(#111215, #f2f7fc);
+  --fg-soft: light-dark(#2c2c2e, #dee2e7);
+  --bg: light-dark(#f2f7fc, #111215);
+  --bg-soft: light-dark(#9d9ea2, #555);
+}
+
 .btn {
-  border: 2px solid #f2f7fc;
+  border: 2px solid var(--fg);
   /* margin: 0.5rem; */
   padding: 0.125rem 1.25rem;
   display: inline-flex;
@@ -17,17 +25,34 @@
 .btn-bg:focus-visible > .btn,
 .btn-bg:active > .btn {
   outline: none;
-  box-shadow: 2px 2px 0px #111215, 3px 3px 0px #f2f7fc;
+  box-shadow: 2px 2px 0px var(--bg), 3px 3px 0px var(--fg);
   transform: translate(-2px, -2px);
-  /* height: 100%;
-  width: 100%; */
-  /* border: 1px solid #f2f7fc; */
-  /* transform: translate(2px, 2px); */
+}
+
+@media (max-width: 570px) {
+  .btn {
+    font-size: 1.25rem;
+    padding: 0.125rem 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .btn {
+    font-size: 1rem;
+    padding: 0.125rem 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .btn {
+    font-size: 0.875rem;
+    padding: 0.125rem 0.5rem;
+  }
 }
 
 #root {
-  color: #f2f7fc;
-  background-color: #111215;
+  color: var(--fg);
+  background-color: var(--bg);
 
   min-height: 100dvh;
   min-width: 100dvw;
@@ -48,8 +73,8 @@
   align-items: center;
 }
 *::selection {
-  color: #111215;
-  background-color: #f2f7fc;
+  color: var(--bg);
+  background-color: var(--fg);
   filter: invert(1);
 }
 p,
@@ -63,13 +88,18 @@ p {
   margin-left: 1.5rem;
   max-width: 640px;
   text-indent: 1ch;
-  color: #dee2e7;
 }
+
+p,
+li {
+  color: var(--fg-soft);
+}
+
 h1 {
   font-size: 4rem;
 }
 a {
-  color: #f2f7fc;
+  color: var(--fg);
 }
 a:hover {
   text-decoration-style: dashed;
@@ -80,14 +110,22 @@ a.btn {
 }
 header {
   display: grid;
-  width: 100dvw;
-  max-width: 900px;
+  width: min(calc(100dvw - 2rem), 900px);
+  padding-left: 1rem;
+  padding-right: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 main {
   width: 100%;
-  margin-top: 12vh;
+  margin-top: 6vh;
   padding: 0.5rem;
+}
+
+img {
+  color: var(--fg);
 }
