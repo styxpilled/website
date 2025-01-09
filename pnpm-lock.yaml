@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/afacad':
-        specifier: ^5.1.1
-        version: 5.1.1
       astro:
         specifier: ^5.1.1
         version: 5.1.1(jiti@2.4.2)(rollup@4.29.1)(typescript@5.7.2)
@@ -335,9 +332,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource/afacad@5.1.1':
-    resolution: {integrity: sha512-EoxV+7O7ybVoiO6z4eNJNZGwyTmLIINWQRmeBl2poCKKmvoruPerDquIpxLFE8LinAlG6JmgpP8orApqgbOdkg==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2050,8 +2044,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.0':
     optional: true
-
-  '@fontsource/afacad@5.1.1': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
