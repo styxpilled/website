@@ -53,8 +53,8 @@
   color: var(--fg);
   background-color: var(--bg);
 
-  min-height: 100dvh;
-  min-width: 100dvw;
+  min-height: 100vh;
+  min-width: 100vw;
   font-family: "Afacad";
   font-size: 1.5rem;
   position: relative;
@@ -62,7 +62,7 @@
 }
 #content {
   position: relative;
-  width: 100dvw;
+  width: 100vw;
   max-width: 1200px;
   z-index: 5;
   margin: auto;
@@ -88,7 +88,9 @@ p {
   max-width: 640px;
   text-indent: 1ch;
 }
-
+h3 {
+  font-weight: 400;
+}
 p,
 li {
   color: var(--fg-soft);
@@ -109,7 +111,7 @@ a.btn {
 }
 header {
   display: grid;
-  width: min(calc(100dvw - 2rem), 900px);
+  width: min(calc(100vw - 2rem), 900px);
   padding-left: 1rem;
   padding-right: 1rem;
   display: flex;
