@@ -83,7 +83,7 @@
     justify-content: center;
     pointer-events: none;
   }
-  @media screen and (min-height: 100vw) {
+  @media (min-height: 100vw) {
     div {
       height: 100vh;
       width: 100vh;
@@ -91,10 +91,21 @@
       left: 50%;
       transform: translateX(-50%);
     }
+    svg {
+      --speed-stop: 0;
+    }
+    g,
+    circle {
+      animation-name: none !important;
+    }
   }
   @media (prefers-reduced-motion) {
     svg {
       --speed-stop: 0;
+    }
+    g,
+    circle {
+      animation-name: none !important;
     }
   }
 
