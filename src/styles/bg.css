@@ -1,0 +1,127 @@
+#bg {
+  stroke: var(--bg-soft);
+  stroke-width: 2;
+  --speed-stop: 1;
+  --speed-mul-1: 1;
+  --speed-mul-2: 1;
+  --speed-mul-3: 1;
+  --speed-mul-4: 1;
+}
+#bg circle,
+#bg rect {
+  fill: none;
+  stroke-miterlimit: 10;
+}
+.ac {
+  stroke-dasharray: 0 0 0 0 12 3 3 3;
+}
+.ad {
+  stroke-dasharray: 0 0 0 0 3 3 3 3;
+}
+
+.ae {
+  stroke-dasharray: 0 0 36 24;
+}
+
+.af {
+  stroke-dasharray: 0 0 3 12;
+}
+#bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 98vw;
+  z-index: 1;
+  display: flex;
+  margin: 1vw;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+@media (min-height: 100vw) {
+  #bg-container {
+    height: 100vh;
+    width: 100vh;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #bg:not(.override) {
+    --speed-stop: 0;
+  }
+  #bg:not(.override) g,
+  #bg:not(.override) circle {
+    animation-name: none !important;
+  }
+}
+@media (prefers-reduced-motion) {
+  #bg:not(.override) {
+    --speed-stop: 0;
+  }
+  #bg:not(.override) g,
+  #bg:not(.override) circle {
+    animation-name: none !important;
+  }
+}
+
+g[id*="inner"] {
+  --speed-mul-1: 1.25;
+}
+g[id*="outter"] {
+  --speed-mul-1: 0.77;
+}
+g[id*="middle"] {
+  --speed-mul-3: 1.43;
+}
+g[id*="greebles"] {
+  --speed-mul-2: 0.5;
+}
+g[id*="1"] {
+  --speed-mul-4: 0.86;
+}
+g[id*="2"] {
+  --speed-mul-4: 1.16;
+}
+#bg g {
+  animation: spin 100s linear infinite;
+  animation-duration: calc(
+    200s * var(--speed-mul-1) * var(--speed-mul-2) * var(--speed-mul-3) *
+      var(--speed-mul-4) * var(--speed-stop)
+  );
+  transform-origin: center;
+}
+#bg g:nth-child(4n + 1) {
+  animation-name: spin-reverse;
+}
+.ad {
+  --speed-mul-1: 0.73;
+}
+circle.ad,
+circle.ac,
+circle.ae,
+circle.af {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: spin 120s linear infinite;
+  animation-duration: calc(120s * var(--speed-mul-1) * var(--speed-stop));
+}
+circle.ac {
+  animation-name: spin-reverse;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}

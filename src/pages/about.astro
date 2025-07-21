@@ -21,6 +21,16 @@ import Layout from "../layouts/Layout.astro";
       do not support persisting CSS animation state, so it has to restart every navigation.
       Pain.
     </p>
+    <p class="reducedmotion mobile">
+      The background moves! You're not seeing it because your system has
+      prefers-reducted-motion turned on, or you're on a mobile device (for
+      performance reasons the effect has been turned off).
+      <button
+        onclick="document.querySelector('#bg').classList.toggle('override')"
+      >
+        Override background movement
+      </button>
+    </p>
     <p>
       The hero image was made using the non-commercial font <a
         href="https://177studio.com/product/protest-stylish-serif-font/"
@@ -38,5 +48,19 @@ import Layout from "../layouts/Layout.astro";
   }
   a.svelte {
     color: #ff3e00;
+  }
+  .reducedmotion,
+  .mobile {
+    display: none;
+  }
+  @media (prefers-reduced-motion) {
+    .reducedmotion {
+      display: block;
+    }
+  }
+  @media (min-height: 100vw) {
+    .mobile {
+      display: block;
+    }
   }
 </style>

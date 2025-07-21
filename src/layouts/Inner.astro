@@ -1,8 +1,14 @@
 ---
 import Background from "../components/Background.astro";
 import "../styles/app.css";
+import "../styles/bg.css";
 ---
 
+<script>
+  import { init } from "../components/persist";
+
+  init();
+</script>
 <div id="root">
   <Background />
   <div id="content">

@@ -6,6 +6,22 @@
   --bg-soft: light-dark(#9d9ea2, #555);
 }
 
+@font-face {
+  font-family: "Afacad";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Afacad Regular"), local("Afacad"),
+    url("/fonts/Afacad/Afacad-Regular.woff2") format("woff2"),
+    url("/fonts/Afacad/Afacad-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: bold;
+  src: url("/fonts/Roboto/Roboto-Bold.woff2");
+}
+
 .btn {
   border: 2px solid var(--fg);
   padding: 0.125rem 1.25rem;
