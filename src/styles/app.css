@@ -61,15 +61,8 @@
 
 @media (max-width: 470px) {
   .btn {
-    font-size: 1rem;
+    font-size: 1.125rem;
     padding: 0.125rem 0.75rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .btn {
-    font-size: 0.875rem;
-    padding: 0.125rem 0.5rem;
   }
 }
 
@@ -106,6 +99,9 @@ h3 {
 }
 p {
   margin-left: 1.5rem;
+  @media (max-width: 740px) {
+    margin-left: 0;
+  }
   max-width: 690px;
   text-indent: 1ch;
 }
@@ -126,17 +122,15 @@ a:hover {
 header {
   margin-top: 1rem;
   width: min(calc(100vw - 2rem), 900px);
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
 main {
   width: 100%;
+  max-width: 90vw;
   margin-top: 6vh;
   padding: 0.5rem;
   text-shadow: 2px 2px 2px var(--bg);
