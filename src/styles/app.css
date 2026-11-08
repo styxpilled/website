@@ -19,7 +19,8 @@
 @font-face {
   font-family: "Roboto";
   font-weight: bold;
-  src: url("/fonts/Roboto/Roboto-Bold.woff2");
+  src: url("/fonts/Roboto/Roboto-Bold.woff2") format("woff2"),
+    url("/fonts/Roboto/Roboto-Bold.woff") format("woff");
 }
 
 .btn {
@@ -31,7 +32,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-feature-settings: "ss03" 1;
-  font-family: "Roboto";
+  font-family: "Roboto", "Helvetica", "Arial";
   transition: transform 150ms, box-shadow 150ms;
   user-select: none;
 }

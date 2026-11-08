@@ -33,7 +33,7 @@ declare global {
 }
 
 const DEBUG = false;
-const SELECTOR = `#bg g`;
+const SELECTOR = `.persist`;
 const crossing = top!.__vtbag?.elementCrossing;
 
 export function init() {

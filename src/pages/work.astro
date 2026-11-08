@@ -7,30 +7,36 @@ const projects: {
   label: string;
   description: string;
 }[] = [
-  {
-    href: "https://blog.styx.gay/",
-    label: "blog",
-    description: "blog with my fun articles",
-  },
-  {
-    href: null,
-    label: "notki CMS",
-    description: `Proprietary video Content Management System made for a client. Made using Svelte/Kit, Rust, Python and PostgreSQL.`,
-  },
+  // {
+  //   href: "https://blog.styx.gay/",
+  //   label: "blog",
+  //   description: "blog with my fun articles",
+  // },
   {
     href: null,
     label: "Video Colorizer",
     description:
-      "Multithreaded AI video colorizing software made in Tauri for a client.",
+      "Proprietary multithreaded AI video colorizing software made in Tauri.",
   },
   {
-    href: "https://codecritic.styx.gay/",
+    href: null,
+    label: "notki CMS",
+    description: `Proprietary video Content Management System. Made using Svelte/Kit, Rust, Python and PostgreSQL.`,
+  },
+  {
+    href: null,
+    label: 'notki v2 | "archive-buddy"',
+    description:
+      "Proprietary standalone video Content Management Software, capable of transcoding, transcribing and peceptual frame searching. Made using Tauri, Svelte 5, Rust and SQLite.",
+  },
+  {
+    href: "https://codecritic.styx.gay",
     label: "codecritic",
     description: "letterboxd for npm packages, made with Svelte/Kit.",
   },
   {
     href: "https://styxtype.styx.gay",
-    label: "webtype",
+    label: "styxtype",
     description: "A collection and showcase of free fonts.",
   },
   {
@@ -38,11 +44,11 @@ const projects: {
     label: "book-buddy",
     description: "A TUI-styled ebook reader made in Tauri.",
   },
-  {
-    href: null,
-    label: "termdraw",
-    description: "A terminal drawing app.",
-  },
+  // {
+  //   href: null,
+  //   label: "termdraw",
+  //   description: "A terminal drawing app.",
+  // },
   {
     href: null,
     label: "vidcat / label-buddy",
@@ -53,12 +59,6 @@ const projects: {
     label: "image-buddy",
     description:
       "High performance image viewer written in Rust, powered by egui.",
-  },
-  {
-    href: null,
-    label: "video-hash",
-    description:
-      "Perceptual video hasher experiment for finding duplicate videos.",
   },
 ];
 ---

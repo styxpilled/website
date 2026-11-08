@@ -14,12 +14,12 @@ import Layout from "../layouts/Layout.astro";
       static site.
     </p>
     <p>
-      The background for this website is a large <a
-        href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a
-      > made in Adobe Illustrator. It's animated entirely using CSS, allowing it
-      work without JavaScript, while still loading extremely fast. Sadly, Astro transitions
-      do not support persisting CSS animation state, so it has to restart every navigation.
-      Pain.
+      The background for this website is a large SVG made in Adobe Illustrator.
+      It's animated entirely using CSS, allowing it work without JavaScript,
+      while still loading extremely fast. Sadly, Astro transitions do not
+      support persisting CSS animation state, so we need to manually save and
+      set the state of every animation during navigation, and the result is not
+      ideal.
     </p>
     <p class="reducedmotion mobile">
       The background moves! You're not seeing it because your system has
@@ -32,12 +32,9 @@ import Layout from "../layouts/Layout.astro";
       </button>
     </p>
     <p>
-      The hero image was made using the non-commercial font <a
-        href="https://177studio.com/product/protest-stylish-serif-font/"
-        >Protest</a
-      >. Originally, I included the font file and used it to render the hero
-      image. Later, I baked it to an SVG in Adobe Illustrator to make some
-      creative edits and reduce page size.
+      Fonts were optimized and subset, allowing me to still use the alternative
+      R glyph for Roboto (which is missing in many versions of the font), while
+      keeping the website slim.
     </p>
   </Inner>
 </Layout>
