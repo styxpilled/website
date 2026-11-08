@@ -10,7 +10,9 @@
   font-family: "Afacad";
   font-weight: 400;
   font-style: normal;
-  src: local("Afacad Regular"), local("Afacad"),
+  src:
+    local("Afacad Regular"),
+    local("Afacad"),
     url("/fonts/Afacad/Afacad-Regular.woff2") format("woff2"),
     url("/fonts/Afacad/Afacad-Regular.woff") format("woff");
   font-display: swap;
@@ -19,7 +21,8 @@
 @font-face {
   font-family: "Roboto";
   font-weight: bold;
-  src: url("/fonts/Roboto/Roboto-Bold.woff2") format("woff2"),
+  src:
+    url("/fonts/Roboto/Roboto-Bold.woff2") format("woff2"),
     url("/fonts/Roboto/Roboto-Bold.woff") format("woff");
 }
 
@@ -33,7 +36,9 @@
   font-weight: 600;
   font-feature-settings: "ss03" 1;
   font-family: "Roboto", "Helvetica", "Arial";
-  transition: transform 150ms, box-shadow 150ms;
+  transition:
+    transform 150ms,
+    box-shadow 150ms;
   user-select: none;
 }
 
@@ -41,7 +46,9 @@
 .btn-bg:focus-visible > .btn,
 .btn-bg:active > .btn {
   outline: none;
-  box-shadow: 2px 2px 0px var(--bg), 3px 3px 0px var(--fg);
+  box-shadow:
+    2px 2px 0px var(--bg),
+    3px 3px 0px var(--fg);
   transform: translate(-2px, -2px);
 }
 
@@ -69,7 +76,6 @@
 #root {
   color: var(--fg);
   background-color: var(--bg);
-
   min-height: 100vh;
   min-width: 100vw;
   font-family: "Afacad";
@@ -91,18 +97,16 @@
 *::selection {
   color: var(--bg);
   background-color: var(--fg);
-  filter: invert(1);
+  text-shadow: none;
 }
 p,
-h1,
-h2,
 h3 {
   margin: 0;
   padding: 0;
 }
 p {
   margin-left: 1.5rem;
-  max-width: 640px;
+  max-width: 690px;
   text-indent: 1ch;
 }
 h3 {
@@ -113,21 +117,14 @@ li {
   color: var(--fg-soft);
 }
 
-h1 {
-  font-size: 4rem;
-}
 a {
   color: var(--fg);
 }
 a:hover {
   text-decoration-style: dashed;
 }
-.btn a,
-a.btn {
-  text-decoration: none;
-}
 header {
-  display: grid;
+  margin-top: 1rem;
   width: min(calc(100vw - 2rem), 900px);
   padding-left: 1rem;
   padding-right: 1rem;
@@ -142,8 +139,5 @@ main {
   width: 100%;
   margin-top: 6vh;
   padding: 0.5rem;
-}
-
-img {
-  color: var(--fg);
+  text-shadow: 2px 2px 2px var(--bg);
 }

@@ -6,71 +6,73 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <Inner>
     <div id="resume">
-      <div>
+      <div class="sidebar">
         <div>
-          <p>Occupation: Full-Stack Developer</p>
+          <p>Occupation: Full-stack developer</p>
           <p>Languages: Polish, English, Lithuanian, Russian</p>
           <p>Location: Warsaw, Poland</p>
-          <p>Website: <a href="https://styx.gay">styx.gay</a></p>
+          <p>
+            Website: <a href="https://styx.gay">styx.gay</a>
+          </p>
           <p>Email: contact@styx.gay</p>
         </div>
-        <div>
-          <p><strong>SKILLS</strong></p>
+        <div class="skills">
+          <p>
+            <strong>SKILLS</strong>
+          </p>
           <ul>
             <li>JS/TS/CSS/HTML</li>
             <li>Svelte</li>
             <li>Astro</li>
             <li>Rust</li>
-            <li>Postgres/SQL</li>
+            <li>SQL</li>
           </ul>
         </div>
       </div>
       <div>
         <div>
           <h3>App developer</h3>
-          <p class="company">Grupa Filmowa sp. z o.o.</p>
-          <p class="time">December 2023 - October 2024</p>
+          <p>@ Grupa Filmowa sp. z o.o.</p>
+          <p>December 2023 - Current</p>
           <ul>
             <li>
-              Designed and developed an accessible AI video colorization desktop
-              app made with Tauri and Svelte.
+              Designed and developed several apps relating to video production,
+              utilizing Tauri for faster development and GPUI for higher
+              performance.
             </li>
             <li>
-              Developed a high-performance, multithreaded Rust backend for said
-              app, complete with integrations for Premiere Pro and DaVinci
-              resolve.
+              Helped increase productivity by creating proprietary applications
+              that indexed a large internal archive, increasing the findability
+              of video material.
+            </li>
+            <li>
+              Introduced AI-accelerated workflows, easing the production process
+              and reducing the manpower spent on tedious tasks.
             </li>
             <li>
               Worked closely with the end users and implemented rapid changes to
               quickly implement wanted features, leading to high satisfaction.
             </li>
+            <li>Managed the network and local systems and servers.</li>
           </ul>
         </div>
         <div>
           <h3>Full-stack developer</h3>
-          <p class="company">ViviTC</p>
-          <p class="time">October 2022 - November 2023</p>
+          <p>@ ViviTC</p>
+          <p>October 2022 - November 2023</p>
           <ul>
             <li>
               Spearheaded work on the "notki" Content Management System for
               Grupa Filmowa sp. z o.o.
             </li>
             <li>
-              Helped write technical reports, specifications and user manuals.
-            </li>
-            <li>
               Designed and developed accessible user interfaces with modern
-              Javascript/Typescript frameworks, HTML5 and CSS3, including a
-              custom video player.
+              state of the art technologies.
             </li>
             <li>
               Developed high-performance, resilient backend webservers in Rust,
-              integrating traditional tools like FFMPEG and Docker, and AI tools
-              like OpenAI's Whisper.
-            </li>
-            <li>
-              Managed a PostgreSQL database, utilizing raw SQL to achieve high
-              performance inachieveable with ORM tools.
+              integrating containerization in Docker, and AI tools like OpenAI's
+              Whisper.
             </li>
           </ul>
         </div>
@@ -97,7 +99,7 @@ import Layout from "../layouts/Layout.astro";
     list-style: circle;
   }
 
-  .company::before {
-    content: "@ ";
+  .skills {
+    margin-top: 1rem;
   }
 </style>

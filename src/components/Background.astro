@@ -8,13 +8,30 @@
  * period:   seconds per revolution (rotations of nested groups around the centre
  *           are already summed into one speed per layer)
  * spinners: dashed circles that additionally spin around their own centre
+ *
+ * This markup is the no-JS fallback. With WebGL2, bg-gl.ts reads the shapes,
+ * periods and dash styles from it and, once its canvas has drawn the first frame,
+ * hides it (html.bg-gl). Until then these layers bridge the gap, so the
+ * background never disappears while navigating.
  */
-type Layer = { period?: number; reverse?: boolean; shapes: string; spinners?: string[] };
+type Layer = {
+  period?: number;
+  reverse?: boolean;
+  shapes: string;
+  spinners?: string[];
+};
 
 const SPINNER_PERIOD = 87.6;
+const VIEWBOX = 2050;
+const viewBox = `0 0 ${VIEWBOX} ${VIEWBOX}`;
 
 const centre = (shape: string) =>
-  ["cx", "cy"].map((a) => (+shape.match(new RegExp(` ${a}="([^"]+)"`))![1] / 2050) * 100 + "%").join(" ");
+  ["cx", "cy"]
+    .map(
+      (a) =>
+        (+shape.match(new RegExp(` ${a}="([^"]+)"`))![1] / VIEWBOX) * 100 + "%",
+    )
+    .join(" ");
 
 const layers: Layer[] = [
   {
@@ -31,13 +48,15 @@ const layers: Layer[] = [
     `,
   },
   {
-    period: 75, reverse: true,
+    period: 75,
+    reverse: true,
     shapes: `
       <circle class="ac" cx="1025" cy="1025" r="1000" />
     `,
   },
   {
-    period: 200, reverse: true,
+    period: 200,
+    reverse: true,
     shapes: `
       <circle style="stroke-dasharray: 1%,10%,1%;" cx="1025" cy="1025.28" r="830.3" />
     `,
@@ -58,9 +77,7 @@ const layers: Layer[] = [
       <circle cx="1507.09" cy="1025.38" r="214.95" />
       <circle cx="1589.57" cy="1026.12" r="132.39" />
     `,
-    spinners: [
-      `<circle class="ad" cx="1025" cy="530" r="25" />`,
-    ],
+    spinners: [`<circle class="ad" cx="1025" cy="530" r="25" />`],
   },
   {
     period: 122.98,
@@ -87,7 +104,8 @@ const layers: Layer[] = [
     `,
   },
   {
-    period: 77, reverse: true,
+    period: 77,
+    reverse: true,
     shapes: `
       <circle cx="959.14" cy="781.41" r="15" />
       <rect x="1317.84" y="999.71" width="50.94" height="50.94" transform="translate(-331.46 1250.13) rotate(-45)" />
@@ -139,7 +157,8 @@ const layers: Layer[] = [
     `,
   },
   {
-    period: 300, reverse: true,
+    period: 300,
+    reverse: true,
     shapes: `
       <circle class="ac" cx="1025" cy="1025" r="280" />
       <circle class="ac" cx="1025" cy="1025" r="712.5" />
@@ -169,7 +188,8 @@ const layers: Layer[] = [
     `,
   },
   {
-    period: 94.6946, reverse: true,
+    period: 94.6946,
+    reverse: true,
     shapes: `
       <circle cx="1396.3" cy="654.15" r="33.94" />
       <rect x="630.3" y="1367.78" width="53" height="53" />
@@ -222,9 +242,7 @@ const layers: Layer[] = [
       <rect x="1008.21" y="1774.91" width="33.59" height="33.59" transform="translate(-966.71 1249.56) rotate(-45)" />
       <rect x="1008.54" y="1897.26" width="33.59" height="33.59" transform="translate(-1053.13 1285.63) rotate(-45)" />
     `,
-    spinners: [
-      `<circle class="ad" cx="1025" cy="1855.58" r="15" />`,
-    ],
+    spinners: [`<circle class="ad" cx="1025" cy="1855.58" r="15" />`],
   },
   {
     period: 77,
@@ -256,82 +274,55 @@ const layers: Layer[] = [
     `,
   },
 ];
-
-let spinnerId = 0;
-const rendered = layers.map((layer, i) => ({
-  ...layer,
-  id: `bg-l${i}`,
-  spinners: (layer.spinners ?? []).map((shape) => ({ shape, id: `bg-s${spinnerId++}` })),
-}));
 ---
-{
-  /* <script>
-  // function getRandomArbitrary(min: number, max: number) {
-  //   return Math.random() * (max - min) + min;
-  // }
-  // const groups = document.getElementsByTagName("g");
 
-  // let i = 0;
-  // for (const group of groups) {
-  // group.style.stroke = "";
-  // group.style.animationDuration = getRandomArbitrary(20, 160) + "s";
-  // group.style.stroke = `hsl(${i * 10}deg 100% 50%)`;
-  // group.style.stroke = `oklch(100% 0.6 ${i * 10}deg)`;
-  // group.style.stroke = "#555";
-  // group.style.stroke = `hsl(${Math.floor(Math.random() * 360)}deg 100% 50%)`;
-  // i++;
-  // }
-
-  // const svg = document.getElementById("bg");
-
-  // if (svg) {
-  //   const els = svg.getElementsByTagName("circle");
-  //   const arr = [...els];
-  // arr
-  //   .sort((a, b) => a.cy.baseVal.value - b.cy.baseVal.value)
-  //   .sort((a, b) => a.cx.baseVal.value - b.cx.baseVal.value)
-  //   .sort((a, b) => a.r.baseVal.value - b.r.baseVal.value);
-  // arr.sort(
-  //   (a, b) =>
-  //     a.cy.baseVal.value +
-  //     a.cx.baseVal.value +
-  //     a.r.baseVal.value -
-  //     (b.cy.baseVal.value + b.cx.baseVal.value + b.r.baseVal.value)
-  // );
-
-  // for (let index = 0; index < arr.length; index++) {
-  // const el = arr[index];
-  // el.style.stroke = `hsl(${(index / arr.length) * 360}deg 100% 50%)`;
-  //   }
-  // }
+<script is:inline>
+  // Animation clock, set before first paint. The start time is kept in
+  // sessionStorage across navigations (and reset on reload). The CSS layers get
+  // the elapsed time as a negative animation-delay, so they start in the right
+  // pose. bg-gl.ts reads the same start time.
+  (() => {
+    const KEY = "bg-start";
+    const root = document.documentElement;
+    const now = performance.timeOrigin + performance.now();
+    let start = now;
+    try {
+      const reload =
+        performance.getEntriesByType("navigation")[0]?.type === "reload";
+      const saved = +(sessionStorage.getItem(KEY) ?? "");
+      if (!reload && saved > 0 && saved <= now) start = saved;
+      sessionStorage.setItem(KEY, "" + start);
+    } catch {}
+    root.dataset.bgStart = "" + start;
+    root.style.setProperty("--bg-delay", (start - now) / 1000 + "s");
+  })();
 </script>
-*/
-}
+<canvas id="bg-gl" aria-hidden="true"></canvas>
+<script>
+  import { start } from "./bg-gl";
+  start();
+</script>
 <div id="bg-container">
   <div id="bg">
-    {
-      rendered.map((layer) =>
-        layer.period ? (
-          <div
-            class:list={["layer persist", { reverse: layer.reverse }]}
-            id={layer.id}
-            style={`--period: ${layer.period}s`}
-          >
-            <svg viewBox="0 0 2050 2050" set:html={layer.shapes} />
-            {layer.spinners.map((spinner) => (
-              <div
-                class="spinner persist"
-                id={spinner.id}
-                style={`--period: ${SPINNER_PERIOD}s; transform-origin: ${centre(spinner.shape)}`}
-              >
-                <svg viewBox="0 0 2050 2050" set:html={spinner.shape} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <svg viewBox="0 0 2050 2050" set:html={layer.shapes} />
-        ),
-      )
-    }
+    {layers.map((layer) =>
+      layer.period ? (
+        <div
+          class:list={["layer", { reverse: layer.reverse }]}
+          style={`--period: ${layer.period}s`}
+        >
+          <svg viewBox={viewBox} set:html={layer.shapes} />
+          {layer.spinners?.map((shape) => (
+            <div
+              class="spinner"
+              style={`--period: ${SPINNER_PERIOD}s; transform-origin: ${centre(shape)}`}
+            >
+              <svg viewBox={viewBox} set:html={shape} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <svg viewBox={viewBox} set:html={layer.shapes} />
+      ),
+    )}
   </div>
 </div>

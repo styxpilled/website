@@ -4,16 +4,10 @@ import "../styles/app.css";
 import "../styles/bg.css";
 ---
 
-<script>
-  import { init } from "../components/persist";
-
-  init();
-</script>
 <div id="root">
   <Background />
   <div id="content">
     <header>
-      <!-- <h2><a id="logo" href="/"> <img height="42" src="/hero.svg" /></a></h2> -->
       <a href="/" class="btn-bg">
         <span class="btn">home</span>
       </a>
@@ -23,18 +17,9 @@ import "../styles/bg.css";
       <a href="/resume" class="btn-bg">
         <span class="btn">resumé</span>
       </a>
-      <a href="/about" class="btn-bg">
-        <span class="btn">about</span>
-      </a>
     </header>
     <main>
       <slot />
     </main>
   </div>
 </div>
-
-<style>
-  header {
-    margin-top: 1rem;
-  }
-</style>

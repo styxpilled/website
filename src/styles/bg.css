@@ -32,9 +32,11 @@
   inset: 0;
   transform-origin: 50% 50%;
   animation: spin var(--period) linear infinite;
+  /* elapsed time of the shared clock (set by the inline script in Background.astro) */
+  animation-delay: var(--bg-delay, 0s);
 }
 .reverse {
-  animation-name: spin-reverse;
+  animation-direction: reverse;
 }
 .ac {
   stroke-dasharray: 0 0 0 0 12 3 3 3;
@@ -42,11 +44,9 @@
 .ad {
   stroke-dasharray: 0 0 0 0 3 3 3 3;
 }
-
 .ae {
   stroke-dasharray: 0 0 36 24;
 }
-
 .af {
   stroke-dasharray: 0 0 3 12;
 }
@@ -73,25 +73,30 @@
   }
 }
 @media (prefers-reduced-motion) {
-  #bg:not(.override) .layer,
-  #bg:not(.override) .spinner {
-    animation-name: none !important;
+  #bg .layer,
+  #bg .spinner {
+    animation-name: none;
   }
 }
-
 @keyframes spin {
-  0% {
-    transform: rotate(0);
-  }
   to {
     transform: rotate(360deg);
   }
 }
-@keyframes spin-reverse {
-  0% {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+
+/*
+ * WebGL renderer (bg-gl.ts). The canvas is transparent until it draws. After the
+ * first frame, html.bg-gl hides the layers above (so they don't animate or
+ * composite). #bg itself stays in the layout: the renderer reads its position and size.
+ */
+#bg-gl {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.bg-gl #bg > * {
+  display: none;
 }

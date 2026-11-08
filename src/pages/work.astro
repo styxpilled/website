@@ -2,32 +2,24 @@
 import Inner from "../layouts/Inner.astro";
 import Layout from "../layouts/Layout.astro";
 
-const projects: {
-  href: string | null;
-  label: string;
-  description: string;
-}[] = [
-  // {
-  //   href: "https://blog.styx.gay/",
-  //   label: "blog",
-  //   description: "blog with my fun articles",
-  // },
+const projects: { href?: string; label: string; description: string }[] = [
   {
-    href: null,
-    label: "Video Colorizer",
+    label: 'notki v3 | "docu-buddy"',
     description:
-      "Proprietary multithreaded AI video colorizing software made in Tauri.",
+      "Video CMS with transcoding, transcribing, OCR, and visual search. Made using GPUI and SQLite.",
   },
   {
-    href: null,
-    label: "notki CMS",
-    description: `Proprietary video Content Management System. Made using Svelte/Kit, Rust, Python and PostgreSQL.`,
-  },
-  {
-    href: null,
     label: 'notki v2 | "archive-buddy"',
     description:
-      "Proprietary standalone video Content Management Software, capable of transcoding, transcribing and peceptual frame searching. Made using Tauri, Svelte 5, Rust and SQLite.",
+      "Video CMS with transcoding, transcribing and pHash duplicate detection. Made using Tauri, Svelte 5, Rust and SQLite.",
+  },
+  {
+    label: "notki CMS",
+    description: `Video CMS made with Svelte/Kit, Rust, Python and PostgreSQL.`,
+  },
+  {
+    label: "Video Colorizer",
+    description: "Proprietary AI video colorizing client made in Tauri.",
   },
   {
     href: "https://codecritic.styx.gay",
@@ -40,22 +32,15 @@ const projects: {
     description: "A collection and showcase of free fonts.",
   },
   {
-    href: null,
+    href: "https://github.com/styxpilled/book-buddy",
     label: "book-buddy",
-    description: "A TUI-styled ebook reader made in Tauri.",
-  },
-  // {
-  //   href: null,
-  //   label: "termdraw",
-  //   description: "A terminal drawing app.",
-  // },
-  {
-    href: null,
-    label: "vidcat / label-buddy",
-    description: "A file management and labeling app made in Tauri.",
+    description: "An ebook reader made in GPUI.",
   },
   {
-    href: null,
+    label: "file-buddy",
+    description: "A file management and clip maker app made in GPUI.",
+  },
+  {
     label: "image-buddy",
     description:
       "High performance image viewer written in Rust, powered by egui.",
@@ -65,29 +50,29 @@ const projects: {
 
 <Layout>
   <Inner>
-    <ul class="projects">
+    <div class="projects">
       <h3>Projects:</h3>
-      {
-        projects.map((project) => (
+      <ul>
+        {projects.map(({ href, label, description }) => (
           <li>
-            <h3>
-              {project.href !== null ? (
-                <a href={project.href}>{project.label}</a>
-              ) : (
-                <span>{project.label}</span>
-              )}
-            </h3>
-            <p>{project.description}</p>
+            <h3>{href ? <a href={href}>{label}</a> : <span>{label}</span>}</h3>
+            <p>{description}</p>
           </li>
-        ))
-      }
-    </ul>
+        ))}
+      </ul>
+    </div>
   </Inner>
 </Layout>
 
 <style>
   .projects {
     margin-top: -3vh;
+    padding-left: 40px;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-left: 0;
   }
 
   p {
