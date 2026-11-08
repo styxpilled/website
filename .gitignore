@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # wrangler state
 .wrangler/
+
+# local notes and experiments
+.notes/
